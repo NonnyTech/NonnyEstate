@@ -62,12 +62,12 @@
                         <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                             Resident
                         </a>
-                        <a asp-action="ViewSecurityFee" asp-controller="Residents"
-                           class="list-group-item list-group-item-action">View Secuirty fee</a>
-                        <a asp-action="" asp-controller="Residents"
-                           class="list-group-item list-group-item-action">Delete</a>
+                        <a asp-action="UpdateFile" asp-controller="Resident"
+                           class="list-group-item list-group-item-action">Update your profile</a>
+                        <a asp-action="PayFee" asp-controller="Resident"
+                           class="list-group-item list-group-item-action">Pay Security fee</a>
                         <form method="post" asp-action="UpdateProfile"
-                              asp-controller="Residents">
+                              asp-controller="Resident">
                             <input type="hidden" value="" name="Residentid" id="Residentid" />
                             <input type="submit" value="update"
                                    class="btn-link list-group-item list-group-item-action" />
