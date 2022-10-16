@@ -1,0 +1,42 @@
+﻿@model Nonny_Estate.Models.Login
+
+@{
+    ViewData["Title"] = "LoginForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewBag.Success == "Yes")
+{
+    <div class="alert-success">
+        Registration sucessful please login
+    </div>
+}
+
+<div class="login-box">
+    <h2>Login</h2>
+    <form method="post" asp-action="LoginForm">
+        <div asp-validation-summary="All" class="text-bg-danger">   </div>
+        <div class="user-box">
+            <input type="text" asp-for="Email" required="">
+            <label>Username</label>
+        </div>
+
+        <div class="user-box">
+            <input type="password" asp-for="Password" required="">
+            <label>Password</label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" style="width:150px">Login</button>
+
+        </div>
+
+
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

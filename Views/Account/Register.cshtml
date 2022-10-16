@@ -1,0 +1,64 @@
+﻿@model Nonny_Estate.Models.Registration
+
+@{
+    ViewData["Title"] = "Register";
+
+}
+
+
+<h4 class="text-uppercase text-center">Register Residents</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <form asp-action="Register">
+            <div asp-validation-summary="All" class="text-bg-danger">   </div>
+            <div class="form-group mt-3">
+                <input class="form-control" asp-for="FirstName" placeholder="First Name" />
+                <span asp-validation-for="FirstName" class="text-danger">  </span>
+
+            </div>
+            <div class="form-group mt-3">
+                <input class="form-control" asp-for="LastName" placeholder="Last Name" />
+                <span asp-validation-for="LastName" class="text-danger">  </span>
+
+            </div>
+            <div class="form-group mt-3">
+                <input class="form-control" asp-for="EmailAddress" placeholder="Email address" />
+                <span asp-validation-for="EmailAddress" class="text-danger">  </span>
+            </div>
+
+            <div class="form-group mt-2">
+                <input class="form-control" asp-for="Password" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger">  </span>
+
+            </div>
+            <div class="form-group mt-3">
+                <input class="form-control" asp-for="ConfirmPassword" placeholder="Confirm password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger">  </span>
+
+            </div>
+            <div class="form-group mt-3">
+                <input class="form-control" asp-for="NoOfCars" placeholder="No of Cars" />
+                <span asp-validation-for="NoOfCars" class="text-danger">  </span>
+
+            </div>
+            <div class="form-group mt-3">
+                <input class="form-control" asp-for="Building" placeholder="Size of Appartment" />
+                <span asp-validation-for="Building" class="text-danger">  </span>
+
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Register" class="btn btn-primary btn-block" />
+
+            </div>
+        </form>
+
+    </div>
+
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

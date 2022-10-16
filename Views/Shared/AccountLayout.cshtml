@@ -1,0 +1,114 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> signManager;
+@inject UserManager<ApplicationUser> UserManager
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Nonny Estate</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">  EstateForm</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    @if (signManager.IsSignedIn(User))
+                    {
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">Welcome @User.Identity.Name</a>
+
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area=""
+                                   asp-controller="Account"
+                                   asp-action="Logout">Logout</a>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LoginForm">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row">
+                <div class="col-3">
+
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                            Resident
+                        </a>
+                        <a asp-action="ViewSecurityFee" asp-controller="Residents"
+                           class="list-group-item list-group-item-action">View Secuirty fee</a>
+                        <a asp-action="" asp-controller="Residents"
+                           class="list-group-item list-group-item-action">Delete</a>
+                        <form method="post" asp-action="UpdateProfile"
+                              asp-controller="Residents">
+                            <input type="hidden" value="" name="Residentid" id="Residentid" />
+                            <input type="submit" value="update"
+                                   class="btn-link list-group-item list-group-item-action" />
+
+                        </form>
+
+
+                    </div>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                            Guest
+                        </a>
+                        <a asp-action="Register" asp-controller="Guest" class="list-group-item list-group-item-action">Register</a>
+                        <a asp-action="ViewGuest" asp-controller="Guest" class="list-group-item list-group-item-action">View Guest</a>
+                        <a asp-action="UpdateGuest" asp-controller="Guest" class="list-group-item list-group-item-action">Update Guest</a>
+
+                    </div>
+                </div>
+                
+
+                <div class="col-9">
+                    @RenderBody()
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - EstateFormApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        <div>
+            @DateTime.Now
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
